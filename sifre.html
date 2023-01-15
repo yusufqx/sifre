@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Encryption Application</title>
+    <style>
+        /* Containers */
+        .container {
+            background-color: rgb(150, 255, 146);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Title */
+        .title {
+            font-size: 36px;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Input */
+        input {
+            background-color: #333;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            width: 60%;
+            transition: background-color 0.3s ease-in;
+        }
+
+        input:focus {
+            background-color: #555;
+        }
+
+        /* Buttons */
+        .custom-button {
+            background-color: #ffcc00;
+            color: #333;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 15px;
+            border: none;
+            transition: background-color 0.3s ease-in;
+        }
+
+        .custom-button:hover {
+            background-color: #ff9900;
+        }
+
+        #decrypt-button {
+            background-color: #ff3333;
+        }
+
+        /* Output */
+        #output {
+            color: #333;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Encryption Application</h1>
+        <label for="input-text">Enter Text:</label>
+        <input type="text" id="input-text" placeholder="Enter text here">
+        <button id="encrypt-button" class="custom-button" onclick="sifrele()">Encrypt</button>
+        <button id="decrypt-button" class="custom-button" onclick="coz()">Decrypt</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function sifrele() {
+            var inputText = document.getElementById("input-text").value;
+            var soru = inputText.split("");
+            var sifreleText = "";
+            for (var i = 0; i < soru.length; i++) {
+                var randomChars = "";
+                for (var j = 0; j < 10; j++) {
+                    randomChars += Math.random().toString(36).substring(2, 12);
+                }
+                sifreleText += soru[i] + randomChars;
+            }
+            document.getElementById("output").innerHTML = sifreleText;
+        }
+
+        function coz() {
+            var inputText = document.getElementById("input-text").value;
+            var cozText = inputText.replace(/[^a-zA-Z0-9]/g, "");
+            document.getElementById("output").innerHTML = cozText;
+        }
+    </script>
+</body>
+
+</html>
